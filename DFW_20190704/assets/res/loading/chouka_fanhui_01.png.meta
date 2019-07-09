@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "6cbf7ce5-11c7-499d-b42e-995a50a21b93",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "chouka_fanhui_01": {
+      "ver": "1.0.3",
+      "uuid": "3efeb010-7b6c-4cfd-b0aa-8f668d64bab7",
+      "rawTextureUuid": "6cbf7ce5-11c7-499d-b42e-995a50a21b93",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 59,
+      "height": 44,
+      "rawWidth": 59,
+      "rawHeight": 44,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

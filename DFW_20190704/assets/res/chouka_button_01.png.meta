@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "3f02ac06-4889-468c-9bab-507e54bd5b53",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "chouka_button_01": {
+      "ver": "1.0.3",
+      "uuid": "537383bc-e853-457f-af8d-39474f25a19d",
+      "rawTextureUuid": "3f02ac06-4889-468c-9bab-507e54bd5b53",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 165,
+      "height": 47,
+      "rawWidth": 165,
+      "rawHeight": 47,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "countdown",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1,
+  "sample": 10,
+  "speed": 0.1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "a79e6df1-b09f-4078-a4b4-0c80150579e4"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "cb13c282-ba15-43ba-8dc5-f7b846ec292b"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "9f7a27e3-343b-473f-b357-cefaa2f133a4"
+            }
+          },
+          {
+            "frame": 0.3,
+            "value": {
+              "__uuid__": "bcd19e26-72c9-4b40-bbd6-b5ed5183c85e"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "cf06f115-e4ba-4683-b17b-ea0484fd89f9"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "290d7aa0-142d-4647-8c2b-2da878814d76"
+            }
+          },
+          {
+            "frame": 0.6,
+            "value": {
+              "__uuid__": "b8086b2e-35ce-46d5-bb92-5f5c22db4efd"
+            }
+          },
+          {
+            "frame": 0.7,
+            "value": {
+              "__uuid__": "560dfeaf-8422-40ad-ae9a-6f36441fac6a"
+            }
+          },
+          {
+            "frame": 0.8,
+            "value": {
+              "__uuid__": "9ee08aaf-320e-417d-ba13-95e04eb70232"
+            }
+          },
+          {
+            "frame": 0.9,
+            "value": {
+              "__uuid__": "75d8ed93-1851-4379-be00-933d7714ad89"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": [
+    {
+      "frame": 0.9,
+      "func": "startGame",
+      "params": []
+    }
+  ]
+}
