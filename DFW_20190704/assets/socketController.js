@@ -84,8 +84,19 @@ exports.socketController = function (url) {
         serialize(cc.vv.protocol.REQUEST_CHANGE_HERO_TYPE,data,callback)
     };
 
+    //开始游戏请求
     that.requestStartGame = function(data,callback){
         serialize(cc.vv.protocol.REQUEST_START_GAME,data,callback)
+    };
+
+    //掷骰子请求
+    that.requestThrowDice = function(data,callback){
+        serialize(cc.vv.protocol.REQUEST_THROW_DICE,data,callback)
+    };
+
+    //结束回合请求
+    that.requestBoutOver = function(data,callback){
+        serialize(cc.vv.protocol.REQUEST_BOUT_OVER,data,callback)
     };
 
 
@@ -116,6 +127,15 @@ exports.socketController = function (url) {
         cc.vv.listener.on(cc.vv.protocol.ON_GAME_START,cb);
     };
       
+    //监听玩家掷骰子
+    that.onThrowDice = function(cb){
+        cc.vv.listener.on(cc.vv.protocol.ON_THROW_DICE,cb);
+    };
 
-      return that
+    //监听回合结束
+    that.onBoutOver = function(cb){
+        cc.vv.listener.on(cc.vv.protocol.ON_BOUT_OVER,cb);
+    };
+
+    return that
   }

@@ -20,6 +20,10 @@ exports.protocol = {
     REQUEST_START_GAME:"request_start_game",
     //聊天
     REQUEST_CHAT:"request_chat",
+    //掷骰子
+    REQUEST_THROW_DICE:"request_throw_dice",
+    //回合结束
+    REQUEST_BOUT_OVER:"request_bout_over",
 
 
 
@@ -35,5 +39,9 @@ exports.protocol = {
     ON_PLAYER_CHAT:"on_player_chat",
     //开始游戏
     ON_GAME_START:"on_game_start",
+    //掷骰子
+    ON_THROW_DICE:"on_throw_dice",
+    //回合结束
+    ON_BOUT_OVER:"on_bout_over",
 
 }

@@ -19,7 +19,7 @@ let eventListener = (function(){
                     cb(data)        
             }
         }else{
-            console.log("不可能到这里来")
+            // console.log("不可能到这里来")
         }
     }
     // 撤销所有的监听器

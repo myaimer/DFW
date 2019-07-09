@@ -1,4 +1,4 @@
-const post = "http://192.168.2.92:3000";
+const post = "http://192.168.3.195:3000";
 
 cc.vv = cc.vv || {};
 // 集成协议模块
@@ -22,6 +22,25 @@ cc.vv.myHeroType = null;
 cc.vv.myNickName = null;
 //定义当前金币数量
 cc.vv.myGoldCount = null;
+//定义一个是否为自己的游戏时间的标签
+cc.vv.isMyGameTime = false;
+//定义自己的英雄当前所在位置的下标
+cc.vv.myHeroCurrentIndex = 0;
+//定义他人的英雄当前所在位置的下标
+cc.vv.otherHeroCurrentIndex = 0;
+//定义当前所使用的道具的数组
+cc.vv.propList = null;
+
+//地图
+cc.vv.MAP = {
+    "m_1":[[-490.8,-252.6],[-400,-200],
+    [-310,-252.3],[-219,-202.4],[-130,-254],[-42,-203],[-40.7,-99.2],[-38,5.3],[51.6,58],[140.1,7.9],
+    [230.7,-43.8],[231,-146],[320,-200],[410.3,-252.5],[500.7,-198.9],[501.8,-94.4],[503,9],[504.3,113.8],
+    [502,219.6],[413,269],[323,218],[230.8,269],[143.1,215],[54.6,268.2],[-36.1,219.4],[-126.1,270.4],
+    [-219.8,221.5],[-309.7,272],[-400,220],[-400,115],[-400,10],[-400,-95] ],
+};
+
+
 
 cc.vv.res = {
     //图片类
@@ -41,6 +60,13 @@ cc.vv.res = {
     "PK"         :{url:"mapRect/pk",  type :cc.SpriteFrame},
     "skill"      :{url:"mapRect/skill",  type :cc.SpriteFrame},
     "start"      :{url:"mapRect/start",  type :cc.SpriteFrame},
+    //骰子类
+    "dice_1"    :{url:"dice/dice1",  type :cc.SpriteFrame},
+    "dice_2"    :{url:"dice/dice2",  type :cc.SpriteFrame},
+    "dice_3"    :{url:"dice/dice3",  type :cc.SpriteFrame},
+    "dice_4"    :{url:"dice/dice4",  type :cc.SpriteFrame},
+    "dice_5"    :{url:"dice/dice5",  type :cc.SpriteFrame},
+    "dice_6"    :{url:"dice/dice6",  type :cc.SpriteFrame},
     //预制件类
     "warning":{url:"warning",     type:cc.Prefab},
     "desk":   {url:"desk",        type:cc.Prefab},
