@@ -24,6 +24,12 @@ exports.protocol = {
     REQUEST_THROW_DICE:"request_throw_dice",
     //回合结束
     REQUEST_BOUT_OVER:"request_bout_over",
+    //战斗
+    REQUEST_FIGHT:"request_fight",
+    //释放技能
+    REQUEST_USE_SKILL:"request_use_skill",
+    //结束战斗
+    REQUEST_FIGHT_OVER:"request_fight_over",
 
 
 
@@ -32,6 +38,8 @@ exports.protocol = {
     ON_PLAYER_JOIN_ROOM: "on_player_join_room",
     //玩家离开房间(大厅视角)
     ON_PLAYER_LEAVE_ROOM: "on_player_leave_room",
+    // 英雄数据库
+    ON_HERO_DATA:"on_hero_data",
 
     //玩家是否准备
     ON_PLAYER_IS_READY:  "on_player_is_ready",
@@ -43,5 +51,11 @@ exports.protocol = {
     ON_THROW_DICE:"on_throw_dice",
     //回合结束
     ON_BOUT_OVER:"on_bout_over",
+    //战斗
+    ON_FIGHT:"on_fight",
+    //释放技能
+    ON_USE_SKILL:"on_use_skill",
+    //结束战斗
+    ON_FIGHT_OVER:"on_fight_over",
 
 }

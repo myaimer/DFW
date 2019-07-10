@@ -23,6 +23,7 @@ cc.Class({
         this.sentMsg();
         //监听
         this.lostConnection();
+        this.onHeroData();
     },
 
     //生成桌子
@@ -36,6 +37,16 @@ cc.Class({
         }
     },
 
+    //获取英雄属性的监听
+    onHeroData(){
+        cc.vv.socketController.onHeroData(function(data){
+            cc.vv.myHeroATk = data.heroATK;
+            cc.vv.myHeroDefense = data.defense;
+            cc.vv.myHeroSkillHurt = data.skill;
+            cc.vv.myHeroHP = data.heroHP;
+        })
+    },
+
     //加入、离开房间，掉线行为
     lostConnection(){
         cc.vv.socketController.onPlayerJoinRoom(function(data){
@@ -43,7 +54,7 @@ cc.Class({
         });
         cc.vv.socketController.onPlayerLeaveRoom(function(data){
             cc.vv.deskList[data.roomID - 1].getComponent("Desk").remove(data);       
-        })
+        });
     },
 
     //给服务器发送进入大厅通知

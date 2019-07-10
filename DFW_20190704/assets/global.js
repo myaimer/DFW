@@ -30,6 +30,16 @@ cc.vv.myHeroCurrentIndex = 0;
 cc.vv.otherHeroCurrentIndex = 0;
 //定义当前所使用的道具的数组
 cc.vv.propList = null;
+//定义自己的英雄的攻击力
+cc.vv.myHeroATk = null;
+//定义自己的英雄的防御
+cc.vv.myHeroDefense = null;
+//定义自己的英雄的技能伤害
+cc.vv.myHeroSkillHurt = null;
+//定义自己的英雄的总血量
+cc.vv.myHeroHP = null;
+//定义别人的英雄的总血量
+cc.vv.otherHeroHP = null;
 
 //地图
 cc.vv.MAP = {
@@ -67,6 +77,11 @@ cc.vv.res = {
     "dice_4"    :{url:"dice/dice4",  type :cc.SpriteFrame},
     "dice_5"    :{url:"dice/dice5",  type :cc.SpriteFrame},
     "dice_6"    :{url:"dice/dice6",  type :cc.SpriteFrame},
+    //技能类
+    "skill_ATK"    :{url:"skill/ATK",  type :cc.SpriteFrame},
+    "skill_defense"    :{url:"skill/defense",  type :cc.SpriteFrame},
+    "skill_1"    :{url:"skill/skill1",  type :cc.SpriteFrame},
+    "skill_2"    :{url:"skill/skill2",  type :cc.SpriteFrame},
     //预制件类
     "warning":{url:"warning",     type:cc.Prefab},
     "desk":   {url:"desk",        type:cc.Prefab},
@@ -74,6 +89,10 @@ cc.vv.res = {
     "rightSeat":  {url:"rightSeat",       type:cc.Prefab},
     "rect":   {url:"rect",       type:cc.Prefab},
     "msgPre":   {url:"msgLabel",       type:cc.Prefab},
+    "fireSkill":   {url:"fireSkill",       type:cc.Prefab},
+    "swordSkill":  {url:"swordSkill",      type:cc.Prefab},
+    "ATKSkill":    {url:"ATTACK",        type:cc.Prefab},
+    "defenseSkill":    {url:"defenseSkill",        type:cc.Prefab},
 };
 
 cc.vv.GAME_HINT = {

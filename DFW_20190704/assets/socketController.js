@@ -99,6 +99,21 @@ exports.socketController = function (url) {
         serialize(cc.vv.protocol.REQUEST_BOUT_OVER,data,callback)
     };
 
+    //战斗请求
+    that.requestFight = function(data,callback){
+        serialize(cc.vv.protocol.REQUEST_FIGHT,data,callback)
+    };
+
+    //释放技能请求
+    that.requestUseSkill = function(data,callback){
+        serialize(cc.vv.protocol.REQUEST_USE_SKILL,data,callback)
+    };
+
+    //战斗结束请求
+    that.requestFightOver = function(data,callback){
+        serialize(cc.vv.protocol.REQUEST_FIGHT_OVER,data,callback)
+    };
+
 
     /*********************************************************监听类********************************************************************/
     //监听玩家加入房间(大厅视角)
@@ -106,10 +121,13 @@ exports.socketController = function (url) {
         cc.vv.listener.on(cc.vv.protocol.ON_PLAYER_JOIN_ROOM,cb);
     };
 
-
     //监听玩家离开房间(大厅视角)
     that.onPlayerLeaveRoom = function(cb){
         cc.vv.listener.on(cc.vv.protocol.ON_PLAYER_LEAVE_ROOM,cb);
+    };
+
+    that.onHeroData = function(cb){
+        cc.vv.listener.on(cc.vv.protocol.ON_HERO_DATA,cb);
     };
 
     //监听玩家是否准备
@@ -136,6 +154,21 @@ exports.socketController = function (url) {
     that.onBoutOver = function(cb){
         cc.vv.listener.on(cc.vv.protocol.ON_BOUT_OVER,cb);
     };
+
+    //监听战斗
+    that.onFight = function(cb){
+        cc.vv.listener.on(cc.vv.protocol.ON_FIGHT,cb);
+    };
+
+    //监听使用技能
+    that.onUseSkill = function(cb){
+        cc.vv.listener.on(cc.vv.protocol.ON_USE_SKILL,cb);
+    };
+
+    //监听战斗结束
+    that.onFightOver = function(cb){
+        cc.vv.listener.on(cc.vv.protocol.ON_FIGHT_OVER,cb);
+    }
 
     return that
   }

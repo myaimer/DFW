@@ -1,8 +1,9 @@
-
 cc.Class({
     extends: cc.Component,
 
     properties: {
+        gameBg:cc.Node,
+        fightBg:cc.Node,
         way:cc.Node,
         chatMsg:cc.EditBox,
         cont:cc.Node,
@@ -14,10 +15,19 @@ cc.Class({
         player1:cc.Node,
         player2:cc.Node,
         boutBtn:cc.Node,
+        skillPackge:cc.Node,
+        myHeroInfo:cc.Node,
+        otherHeroInfo:cc.Node,
+        fightBoutOverBtn:cc.Node,
     },
 
 
-    // onLoad () {},
+    onLoad () {
+        this.currentHP = cc.vv.myHeroHP;
+        this.currentATK = cc.vv.myHeroATk;
+        this.currentDefense = cc.vv.myHeroDefense;
+        this.currentSkillHurt = cc.vv.myHeroSkillHurt;
+    },
 
     start () {
         //定义方块上放置的道具图片数组
@@ -27,6 +37,9 @@ cc.Class({
         this.onChat();
         this.onThrowDice(); 
         this.onBoutOver();
+        this.onFight();
+        this.onUseSkill();
+        this.onFightOver();
     },
 
     //请求开始游戏
@@ -126,7 +139,6 @@ cc.Class({
 
     //掷骰子
     throwDice(){
-        // cc.vv.isMyGameTime = true; 
         let data = {};
         data.accountID = cc.vv.myAccountID;  
         data.seatIndex = cc.vv.mySeatIndex;
@@ -190,9 +202,194 @@ cc.Class({
     //检查所在下标的道具
     checkProp(index){
         let propIndex = cc.vv.propList[index];
-        if(propIndex == 4){
-            
+        if(propIndex == 0){
+            console.log("获得攻击力加成")
         }
+        if(propIndex == 1){
+            console.log("获得血量加成")
+        }
+        if(propIndex == 2){
+            console.log("获得防御加成")
+        }
+        if(propIndex == 3){
+            console.log("获得金币加成")
+        }
+        if(propIndex == 4){
+            console.log("进入战斗场景")
+            // this.fight();
+        }
+        if(propIndex == 5){
+            console.log("获得技能伤害加成")
+        }
+        this.fight();
+    },
+
+    //请求战斗
+    fight(){        
+        let data = {};
+        data.accountID = cc.vv.myAccountID;
+        let self = this;
+        cc.vv.socketController.requestFight(data,function(err,res){
+            if(err){
+                console.log(err);
+            }else{
+                // cc.vv.isMyGameTime = res; 
+            }
+        })
+    },
+
+    //监听战斗
+    onFight(){
+        let self = this;
+        cc.vv.socketController.onFight(function(data){
+            if(data.isFight){
+                self.gameBg.active = false;
+                self.fightBg.active = true; 
+                if(data.seatIndex == cc.vv.mySeatIndex){
+                    self.fightBoutOverBtn.active = true;
+                    self.skillPackge.active = true;
+                }else{
+                    self.skillPackge.active = false;
+                }              
+                self.showFightInfo(data.res[0],data.nickName);
+            }
+            
+        })
+    },
+
+    //展示战斗信息
+    showFightInfo(info,nickName){
+        let heroInfo = null;
+        if(info.accountID == cc.vv.myAccountID){
+            heroInfo = this.myHeroInfo;
+            cc.vv.myHeroHP = info.heroHP;
+            this.skillPackge.getChildByName("box3").getChildByName("skillPic").getComponent(cc.Sprite).spriteFrame = cc.vv.res["skill_" + info.herotype];
+        }else{
+            heroInfo = this.otherHeroInfo;
+            cc.vv.otherHeroHP = info.heroHP;
+        }
+        heroInfo.getChildByName("hero").getComponent(cc.Sprite).spriteFrame = cc.vv.res[info.herotype];
+        heroInfo.getChildByName("HP").getChildByName("label").getComponent(cc.Label).string = info.heroHP;
+        heroInfo.getChildByName("nickName").getComponent(cc.Label).string = nickName;
+        this.skillPackge.getChildByName("box1").getChildByName("skillPic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.skill_ATK;
+        this.skillPackge.getChildByName("box2").getChildByName("skillPic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.skill_defense;       
+    },
+
+    //释放技能请求
+    useSkill(event,customData){
+        let data = {};
+        data.accountID = cc.vv.myAccountID;
+        data.useSkillType = customData;
+        data.ATK = this.currentATK;
+        cc.vv.socketController.requestUseSkill(data,function(err,res){
+            if(err){
+                console.log(err);
+            }else{
+                // console.log(res);
+            }
+        })
+    },
+
+    //监听释放技能
+    onUseSkill(){
+        let self = this;
+        cc.vv.socketController.onUseSkill(function(data){
+            console.log(data);
+            if(data.accountID == cc.vv.myAccountID){
+                //todo 播放自己的释放技能的动画
+                self.myHeroInfo.runAction(
+                    cc.sequence(
+                        cc.moveTo(1,cc.v2(self.otherHeroInfo.x+800,self.otherHeroInfo.y-400)),
+                        cc.callFunc(function(){
+                            self.release(data.useSkillType,self.otherHeroInfo,data.heroType,data.accountID);
+                        }),
+                        cc.moveTo(1,cc.v2(self.myHeroInfo.x,self.myHeroInfo.y)),
+                    )                    
+                )                
+            }else{
+                //todo 播放别人释放技能的动画，并计算伤害
+                self.otherHeroInfo.runAction(
+                    cc.sequence(
+                        cc.moveTo(1,cc.v2(self.myHeroInfo.x - 800,self.myHeroInfo.y + 400)),
+                        cc.callFunc(function(){
+                            self.release(data.useSkillType,self.myHeroInfo,data.heroType,data.accountID);
+                        }),
+                        cc.moveTo(1,cc.v2(self.otherHeroInfo.x,self.otherHeroInfo.y)),
+                    )
+                )                
+
+            }
+        })
+    },
+
+    //释放对应技能
+    release(type,pos,heroType,accountID){
+        if(type == "ATK"){
+            let skill = cc.instantiate(cc.vv.res.ATKSkill);
+            pos.getChildByName("hero").addChild(skill);
+            skill.getComponent(cc.Animation).play();
+            setTimeout(function(){
+                skill.destroy();
+            }.bind(this),500)
+        }
+        if(type == "defense"){
+            let skill = cc.instantiate(cc.vv.res.defenseSkill);
+            if(accountID == cc.vv.myAccountID){
+                this.myHeroInfo.getChildByName("hero").addChild(skill);
+            }else{
+                this.otherHeroInfo.getChildByName("hero").addChild(skill);
+            }           
+            skill.getComponent(cc.Animation).play();
+            setTimeout(function(){
+                skill.destroy();
+            }.bind(this),500)
+        }
+        if(type == "skill"){
+            if(heroType == 1){
+                let skill = cc.instantiate(cc.vv.res.fireSkill);
+                pos.getChildByName("hero").addChild(skill);
+                skill.getComponent(cc.Animation).play();
+                setTimeout(function(){
+                    skill.destroy();
+                }.bind(this),500)
+            }
+            if(heroType == 2){
+                let skill = cc.instantiate(cc.vv.res.swordSkill);
+                pos.getChildByName("hero").addChild(skill);
+                skill.getComponent(cc.Animation).play();
+                setTimeout(function(){
+                    skill.destroy();
+                }.bind(this),500)
+            }
+        }
+    },
+
+    //请求结束战斗
+    fightOver(){
+        let data = {};
+        data.accountID = cc.vv.myAccountID;
+        cc.vv.socketController.requestFightOver(data,function(err,res){
+            if(err){
+                console.log(err);
+            }else{
+                // console.log(res);
+            }
+        })
+    },
+
+    //监听战斗结束
+    onFightOver(){
+        let self = this;
+        cc.vv.socketController.onFightOver(function(data){
+            console.log(data);
+            if(data == cc.vv.mySeatIndex){
+                self.skillPackge.active = false;
+                self.fightBoutOverBtn.active = false;
+            }else{
+                self.skillPackge.active = true;
+                self.fightBoutOverBtn.active = true;
+            }
+        })
     },
 
     //回合结束按钮回调函数

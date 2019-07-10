@@ -1,0 +1,103 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "swordSkill",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.23333333333333334,
+  "sample": 60,
+  "speed": 0.2,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "dd2ab937-6924-41b4-a610-7970ba89aa7c"
+            }
+          },
+          {
+            "frame": 0.016666666666666666,
+            "value": {
+              "__uuid__": "53e1e069-7546-4cb3-8b8e-6dd1f6933b0f"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "50228020-1fba-45b0-a0bc-11f5976d2d83"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "d3c3b055-a3ef-4469-b45a-0d4168fec326"
+            }
+          },
+          {
+            "frame": 0.06666666666666667,
+            "value": {
+              "__uuid__": "3936d9e4-8a55-45a8-8320-9b614769a909"
+            }
+          },
+          {
+            "frame": 0.08333333333333333,
+            "value": {
+              "__uuid__": "1e325c4c-7f93-4a0e-90f0-3b978bf1a93d"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "a126979f-ae80-404f-a7e2-2cda3436fdb3"
+            }
+          },
+          {
+            "frame": 0.11666666666666667,
+            "value": {
+              "__uuid__": "fda01bad-615c-4ea0-81e4-2fac2e4a1e48"
+            }
+          },
+          {
+            "frame": 0.13333333333333333,
+            "value": {
+              "__uuid__": "e457e475-3225-4e67-9ac1-f72f0b6a0230"
+            }
+          },
+          {
+            "frame": 0.15,
+            "value": {
+              "__uuid__": "73454530-0336-4316-80d1-55482a34a210"
+            }
+          },
+          {
+            "frame": 0.16666666666666666,
+            "value": {
+              "__uuid__": "876e152e-0734-4418-b829-9122c37a6bcb"
+            }
+          },
+          {
+            "frame": 0.18333333333333332,
+            "value": {
+              "__uuid__": "02a5be29-32b9-474d-af72-cb9261492ace"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "728c3a2f-59f6-4090-9120-bf0d13883e93"
+            }
+          },
+          {
+            "frame": 0.21666666666666667,
+            "value": {
+              "__uuid__": "cb3f11b0-1515-4b57-b9fe-deee9d7ec444"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

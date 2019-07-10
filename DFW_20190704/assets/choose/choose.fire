@@ -3369,7 +3369,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "blood",
+    "_name": "HP",
     "_objFlags": 0,
     "_parent": {
       "__id__": 68
@@ -4948,7 +4948,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "blood",
+    "_name": "HP",
     "_objFlags": 0,
     "_parent": {
       "__id__": 106
@@ -6527,7 +6527,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "blood",
+    "_name": "HP",
     "_objFlags": 0,
     "_parent": {
       "__id__": 144
@@ -8106,7 +8106,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "blood",
+    "_name": "HP",
     "_objFlags": 0,
     "_parent": {
       "__id__": 182
@@ -9685,7 +9685,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "blood",
+    "_name": "HP",
     "_objFlags": 0,
     "_parent": {
       "__id__": 220
