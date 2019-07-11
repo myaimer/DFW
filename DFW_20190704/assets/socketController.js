@@ -114,6 +114,21 @@ exports.socketController = function (url) {
         serialize(cc.vv.protocol.REQUEST_FIGHT_OVER,data,callback)
     };
 
+    //伤害玩家请求
+    that.requestHurtPLayer = function(data,callback){
+        serialize(cc.vv.protocol.REQUEST_HURT_PLAYER,data,callback)
+    };
+
+    //发出自己造成的真实伤害请求
+    that.requestBeHurt = function(data,callback){
+        serialize(cc.vv.protocol.REQUEST_BE_HURT,data,callback)
+    };
+
+    //请求传送自己英雄信息
+    that.requestSentHeroInfo = function(data,callback){
+        serialize(cc.vv.protocol.REQUEST_SENT_HERO_INFO,data,callback)
+    };
+
 
     /*********************************************************监听类********************************************************************/
     //监听玩家加入房间(大厅视角)
@@ -168,7 +183,22 @@ exports.socketController = function (url) {
     //监听战斗结束
     that.onFightOver = function(cb){
         cc.vv.listener.on(cc.vv.protocol.ON_FIGHT_OVER,cb);
-    }
+    };
+
+    //监听伤害玩家
+    that.onHurtPlayer = function(cb){
+        cc.vv.listener.on(cc.vv.protocol.ON_HURT_PLAYER,cb);
+    };
+
+    //监听其他玩家被自己造成的真实伤害
+    that.onBeHurt = function(cb){
+        cc.vv.listener.on(cc.vv.protocol.ON_BE_HURT,cb);
+    };
+
+    //监听其他玩家的英雄信息
+    that.onHeroInfo = function(cb){
+        cc.vv.listener.on(cc.vv.protocol.ON_HERO_INFO,cb);
+    };
 
     return that
   }

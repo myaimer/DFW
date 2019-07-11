@@ -1,4 +1,4 @@
-const post = "http://192.168.3.195:3000";
+const post = "http://192.168.3.197:3000";
 
 cc.vv = cc.vv || {};
 // 集成协议模块
@@ -77,11 +77,20 @@ cc.vv.res = {
     "dice_4"    :{url:"dice/dice4",  type :cc.SpriteFrame},
     "dice_5"    :{url:"dice/dice5",  type :cc.SpriteFrame},
     "dice_6"    :{url:"dice/dice6",  type :cc.SpriteFrame},
+    //道具提示图标
+    "iconATK"    :{url:"getProp/ATK",  type :cc.SpriteFrame},
+    "iconHP"    :{url:"getProp/HP",  type :cc.SpriteFrame},
+    "iconDenfense"    :{url:"getProp/defense",  type :cc.SpriteFrame},
+    "iconGold"    :{url:"getProp/gold",  type :cc.SpriteFrame},
+    "iconSkill"    :{url:"getProp/skill",  type :cc.SpriteFrame},
     //技能类
     "skill_ATK"    :{url:"skill/ATK",  type :cc.SpriteFrame},
     "skill_defense"    :{url:"skill/defense",  type :cc.SpriteFrame},
     "skill_1"    :{url:"skill/skill1",  type :cc.SpriteFrame},
     "skill_2"    :{url:"skill/skill2",  type :cc.SpriteFrame},
+    //结算
+    "endWin"    :{url:"endWin",  type :cc.SpriteFrame},
+    "endLost"    :{url:"endLost",  type :cc.SpriteFrame},
     //预制件类
     "warning":{url:"warning",     type:cc.Prefab},
     "desk":   {url:"desk",        type:cc.Prefab},

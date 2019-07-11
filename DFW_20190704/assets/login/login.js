@@ -30,8 +30,8 @@ cc.Class({
         let errInfo = cc.vv.checkInput(this.loginInterface);
         if(errInfo){
             cc.vv.showHint(errInfo);
-        }
-        let data = {
+        }else{
+           let data = {
             accountID :this.loginID.string,
             password :this.loginPassword.string,
         }
@@ -42,7 +42,9 @@ cc.Class({
                 cc.vv.myAccountID = data.accountID;
                 cc.director.loadScene("hall");
             }
-        })
+        }) 
+        }
+        
     },
 
     onButtonClick(event,customData){

@@ -30,7 +30,12 @@ exports.protocol = {
     REQUEST_USE_SKILL:"request_use_skill",
     //结束战斗
     REQUEST_FIGHT_OVER:"request_fight_over",
-
+    // 造成伤害
+    REQUEST_HURT_PLAYER:"request_hurt_player",
+    // 被造成的真实伤害
+    REQUEST_BE_HURT:"request_be_hurt",
+    //传送自己英雄信息
+    REQUEST_SENT_HERO_INFO:"request_sent_hero_info",
 
 
     // 通知类协议.....................................
@@ -57,5 +62,11 @@ exports.protocol = {
     ON_USE_SKILL:"on_use_skill",
     //结束战斗
     ON_FIGHT_OVER:"on_fight_over",
+    // 监听造成的伤害
+    ON_HURT_PLAYER:"on_hurt_player",
+    // 被造成的真实伤害
+    ON_BE_HURT:"on_be_hurt",
+    //监听其他玩家的英雄信息
+    ON_HERO_INFO:"on_hero_info",
 
 }

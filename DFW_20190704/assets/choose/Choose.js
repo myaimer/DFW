@@ -48,7 +48,7 @@ cc.Class({
             accountID:"accountID",
             heroType:"heroType",
             heroTypeValue:this.idx+1,
-            accountIDValue:cc.vv.myAccountID  
+            accountIDValue:cc.vv.myAccountID,  
         };
         cc.vv.socketController.requestChangeHeroType(data,function(err,res){
             if(err){

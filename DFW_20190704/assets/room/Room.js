@@ -26,6 +26,7 @@ cc.Class({
         //监听玩家加入房间
         cc.vv.socketController.onPlayerJoinRoom(function(data){
             self.loadInfo(data,1);
+            self.vsShow(); 
         });
         //监听玩家离开房间
         cc.vv.socketController.onPlayerLeaveRoom(function(data){
