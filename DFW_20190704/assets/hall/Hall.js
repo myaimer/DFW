@@ -84,6 +84,8 @@ cc.Class({
         cc.vv.myHeroType = info.heroType;
         cc.vv.myNickName = info.nickName;
         cc.vv.myGoldCount = info.gold;
+        cc.vv.myGameWon = info.gameWon;
+        cc.vv.myGameLost = info.gameLost;
         this.nickNameLabel.string = info.nickName;
         this.goldLabel.string = info.gold;
         this.gameCountLabel.string = "胜：" + info.gameWon + " 负：" + info.gameLost;        

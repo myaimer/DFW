@@ -152,6 +152,14 @@ cc.Class({
         this[customData]();
     },
 
+    //逃跑
+    flee(){
+        this.fightBg.getChildByName("fleeMsg").active = true;
+        setTimeout(function(){
+            this.fightBg.getChildByName("fleeMsg").active = false;
+        }.bind(this),3000)
+    },
+
     //掷骰子
     throwDice(){
         let data = {};
@@ -225,7 +233,7 @@ cc.Class({
             }.bind(this),3000);
         }        
         if(propIndex == 0){         
-            let ran = (Math.random() * 15 + 5) | 0 + 1000;
+            let ran = (Math.random() * 15 + 5) | 0 ;
             this.propMsg.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.iconATK;
             this.propMsg.getChildByName("label").getComponent(cc.Label).string = "攻击力提升" + ran + "点";
             this.currentATK += ran;           
@@ -253,7 +261,7 @@ cc.Class({
             this.fight();
         }
         if(propIndex == 5){
-            let ran = (Math.random() * 40 + 10) | 0 + 1000;
+            let ran = (Math.random() * 40 + 10) | 0 ;
             this.propMsg.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.iconSkill;
             this.propMsg.getChildByName("label").getComponent(cc.Label).string = "技能伤害提升" + ran + "点";
             this.currentSkillHurt += ran;
@@ -582,10 +590,16 @@ cc.Class({
             this.gameEnd.active = true;
             if(this.otherCurrentHeroHP <= 0){
                 this.gameEnd.getChildByName("endPic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.endWin;
+                this.gameEnd.getChildByName("endPic").getChildByName("gameWon").getComponent(cc.Label).string = cc.vv.myGameWon + 1;
+                this.gameEnd.getChildByName("endPic").getChildByName("gameLost").getComponent(cc.Label).string = cc.vv.myGameLost;
             }
             if(this.currentHP <= 0){
                 this.gameEnd.getChildByName("endPic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.endLost;
+                this.gameEnd.getChildByName("endPic").getChildByName("gameWon").getComponent(cc.Label).string = cc.vv.myGameWon;
+            this.gameEnd.getChildByName("endPic").getChildByName("gameLost").getComponent(cc.Label).string = cc.vv.myGameLost + 1;
             }
+            this.gameEnd.getChildByName("endPic").getChildByName("nickName").getComponent(cc.Label).string = cc.vv.myNickName;
+            this.gameEnd.getChildByName("endPic").getChildByName("gold").getComponent(cc.Label).string = this.currentGold;
             setTimeout(function(){
                 cc.vv.listener.removeAllListener();
                 cc.director.loadScene("room");

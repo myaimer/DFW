@@ -129,6 +129,11 @@ exports.socketController = function (url) {
         serialize(cc.vv.protocol.REQUEST_SENT_HERO_INFO,data,callback)
     };
 
+    //请求强化自己的英雄
+    that.requestIntensifyHero = function(data,callback){
+        serialize(cc.vv.protocol.REQUEST_INTENSIFY_HERO,data,callback)
+    };
+
 
     /*********************************************************监听类********************************************************************/
     //监听玩家加入房间(大厅视角)

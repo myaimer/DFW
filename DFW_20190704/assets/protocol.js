@@ -36,6 +36,8 @@ exports.protocol = {
     REQUEST_BE_HURT:"request_be_hurt",
     //传送自己英雄信息
     REQUEST_SENT_HERO_INFO:"request_sent_hero_info",
+    //强化英雄属性
+    REQUEST_INTENSIFY_HERO:"request_intensify_hero",
 
 
     // 通知类协议.....................................

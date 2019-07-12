@@ -12,6 +12,10 @@ cc.vv.listener = require("./eventListener");
 cc.vv.deskList = [];
 //定义当前登录的ID
 cc.vv.myAccountID = null;
+//定义当前的胜利场次
+cc.vv.myGameWon = null;
+//定义当前的失败场次
+cc.vv.myGameLost = null;
 //定义当前选择的房间号
 cc.vv.myRoomID = null;
 //定义当前选择的座位号
@@ -62,6 +66,8 @@ cc.vv.res = {
     "3"    :{url:"hero/3",  type :cc.SpriteFrame},
     "4"    :{url:"hero/4",  type :cc.SpriteFrame},
     "5"    :{url:"hero/5",  type :cc.SpriteFrame},
+    //强化
+    "intensify":{url:"jiantou",  type :cc.SpriteFrame},
     //方块放置的道具
     "ATK"        :{url:"mapRect/ATK",  type :cc.SpriteFrame},
     "blood"      :{url:"mapRect/blood",  type :cc.SpriteFrame},

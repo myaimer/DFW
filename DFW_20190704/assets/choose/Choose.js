@@ -10,6 +10,8 @@ cc.Class({
 
         nickName:cc.Label,
         goldCount:cc.Label,
+        intensifyPic:cc.Sprite,
+        tishiLabel:cc.Node,
     },
 
 
@@ -25,7 +27,7 @@ cc.Class({
 
     showMyInfo(){
         this.nickName.string = cc.vv.myNickName;
-        this.goldCount.stirng = cc.vv.myGoldCount;
+        this.goldCount.string = cc.vv.myGoldCount;
         let number = Number(cc.vv.myHeroType);
         this.content.x = -this.posList[number - 1];
     },
@@ -62,13 +64,33 @@ cc.Class({
     //强化
     intensify(){
         //todo 让英雄的属性提升
-        console.log("提升英雄属性")
+        if(cc.vv.myGoldCount >= 100){
+            this.intensifyPic.spriteFrame = cc.vv.res.intensify;
+            cc.vv.myHeroHP += 10;
+            let m = this.idx + 1
+            this.heroInfoPar.getChildByName("heroInfo" + m).getChildByName("HP").children[0].getComponent(cc.Label).string = cc.vv.myHeroHP;
+            cc.vv.myGoldCount -= 100;
+            this.goldCount.string = cc.vv.myGoldCount;
+            setTimeout(function(){            
+                this.intensifyPic.spriteFrame = null;
+            }.bind(this),2000)
+        }else{
+            this.tishiLabel.active = true;
+            this.tishiLabel.children[0].getComponent(cc.Label).string = "金币不足100";
+            setTimeout(function(){
+                this.tishiLabel.active = false;
+            }.bind(this),2000)
+        }
+        
     },
 
     //开启英雄
     open(){
-        //todo 开启新英雄
-        console.log("开启英雄")
+        this.tishiLabel.active = true;
+            this.tishiLabel.children[0].getComponent(cc.Label).string = "金币不足10000";
+            setTimeout(function(){
+                this.tishiLabel.active = false;
+            }.bind(this),2000)
     },
 
     //下一个
