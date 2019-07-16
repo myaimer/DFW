@@ -225,49 +225,49 @@ cc.Class({
 
     //检查所在下标的道具
     checkProp(index){
-        let propIndex = cc.vv.propList[index];
-        if(propIndex !== 4){
-            this.propMsg.active = true;
-            setTimeout(function(){
-                this.propMsg.active = false;
-            }.bind(this),3000);
-        }        
-        if(propIndex == 0){         
-            let ran = (Math.random() * 15 + 5) | 0 ;
-            this.propMsg.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.iconATK;
-            this.propMsg.getChildByName("label").getComponent(cc.Label).string = "攻击力提升" + ran + "点";
-            this.currentATK += ran;           
-        }
-        if(propIndex == 1){
-            let ran = (Math.random() * 150 + 50) | 0;
-            this.propMsg.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.iconHP;
-            this.propMsg.getChildByName("label").getComponent(cc.Label).string = "血量提升" + ran + "点";
-            this.currentHP += ran;
-            this.currentTotalHP += ran;
-        }
-        if(propIndex == 2){
-            let ran = (Math.random() * 40 + 10) | 0;
-            this.propMsg.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.iconDenfense;
-            this.propMsg.getChildByName("label").getComponent(cc.Label).string = "防御提升" + ran + "点";
-            this.currentDefense += ran;
-        }
-        if(propIndex == 3){
-            let ran = (Math.random() * 80 + 20) | 0;
-            this.propMsg.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.iconGold;
-            this.propMsg.getChildByName("label").getComponent(cc.Label).string = "获得金币" + ran + "个";
-            this.currentGold += ran;
-        }
-        if(propIndex == 4){
-            this.fight();
-        }
-        if(propIndex == 5){
-            let ran = (Math.random() * 40 + 10) | 0 ;
-            this.propMsg.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.iconSkill;
-            this.propMsg.getChildByName("label").getComponent(cc.Label).string = "技能伤害提升" + ran + "点";
-            this.currentSkillHurt += ran;
-        }   
+        // let propIndex = cc.vv.propList[index];
+        // if(propIndex !== 4){
+        //     this.propMsg.active = true;
+        //     setTimeout(function(){
+        //         this.propMsg.active = false;
+        //     }.bind(this),3000);
+        // }        
+        // if(propIndex == 0){         
+        //     let ran = (Math.random() * 15 + 5) | 0 ;
+        //     this.propMsg.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.iconATK;
+        //     this.propMsg.getChildByName("label").getComponent(cc.Label).string = "攻击力提升" + ran + "点";
+        //     this.currentATK += ran;           
+        // }
+        // if(propIndex == 1){
+        //     let ran = (Math.random() * 150 + 50) | 0;
+        //     this.propMsg.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.iconHP;
+        //     this.propMsg.getChildByName("label").getComponent(cc.Label).string = "血量提升" + ran + "点";
+        //     this.currentHP += ran;
+        //     this.currentTotalHP += ran;
+        // }
+        // if(propIndex == 2){
+        //     let ran = (Math.random() * 40 + 10) | 0;
+        //     this.propMsg.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.iconDenfense;
+        //     this.propMsg.getChildByName("label").getComponent(cc.Label).string = "防御提升" + ran + "点";
+        //     this.currentDefense += ran;
+        // }
+        // if(propIndex == 3){
+        //     let ran = (Math.random() * 80 + 20) | 0;
+        //     this.propMsg.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.iconGold;
+        //     this.propMsg.getChildByName("label").getComponent(cc.Label).string = "获得金币" + ran + "个";
+        //     this.currentGold += ran;
+        // }
+        // if(propIndex == 4){
+        //     this.fight();
+        // }
+        // if(propIndex == 5){
+        //     let ran = (Math.random() * 40 + 10) | 0 ;
+        //     this.propMsg.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.iconSkill;
+        //     this.propMsg.getChildByName("label").getComponent(cc.Label).string = "技能伤害提升" + ran + "点";
+        //     this.currentSkillHurt += ran;
+        // }   
 
-        // this.fight();       
+        this.fight();       
     },
 
     
@@ -320,7 +320,6 @@ cc.Class({
     onOtherHeroInfo(){
         let self = this;
         cc.vv.socketController.onHeroInfo(function(data){
-            console.log(data);
             self.otherCurrentHeroHP = data.currentHP;
             self.otherCurrentHeroTotalHP = data.currentTotalHP;
         })
@@ -596,7 +595,7 @@ cc.Class({
             if(this.currentHP <= 0){
                 this.gameEnd.getChildByName("endPic").getComponent(cc.Sprite).spriteFrame = cc.vv.res.endLost;
                 this.gameEnd.getChildByName("endPic").getChildByName("gameWon").getComponent(cc.Label).string = cc.vv.myGameWon;
-            this.gameEnd.getChildByName("endPic").getChildByName("gameLost").getComponent(cc.Label).string = cc.vv.myGameLost + 1;
+                this.gameEnd.getChildByName("endPic").getChildByName("gameLost").getComponent(cc.Label).string = cc.vv.myGameLost + 1;
             }
             this.gameEnd.getChildByName("endPic").getChildByName("nickName").getComponent(cc.Label).string = cc.vv.myNickName;
             this.gameEnd.getChildByName("endPic").getChildByName("gold").getComponent(cc.Label).string = this.currentGold;

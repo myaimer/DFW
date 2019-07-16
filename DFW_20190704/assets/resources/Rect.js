@@ -23,7 +23,7 @@ cc.Class({
     },
 
     show(){
-        this.label.string = this.index;
+        // this.label.string = this.index;
         if(this.index === 0){
             this.pic.spriteFrame = cc.vv.res.start;
         }else{

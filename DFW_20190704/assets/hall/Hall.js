@@ -108,6 +108,7 @@ cc.Class({
 
     //跳转英雄选择场景
     choose(){
+        cc.vv.listener.removeAllListener();
         cc.director.loadScene("choose");
     }
 

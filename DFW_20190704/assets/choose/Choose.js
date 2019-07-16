@@ -74,6 +74,16 @@ cc.Class({
             setTimeout(function(){            
                 this.intensifyPic.spriteFrame = null;
             }.bind(this),2000)
+            let data = {};
+            data.accountID = cc.vv.myAccountID;
+            data.gold = cc.vv.myGoldCount;
+            cc.vv.socketController.requestIntensifyHero(data,function(err,res){
+                if(err){
+                    console.log(err)
+                }else{
+                    
+                }
+            })
         }else{
             this.tishiLabel.active = true;
             this.tishiLabel.children[0].getComponent(cc.Label).string = "金币不足100";
